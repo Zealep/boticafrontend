@@ -37,11 +37,16 @@ import { DetailsCompraComponent } from './compra/details-compra/details-compra.c
 import { VentaComponent } from './venta/venta.component';
 import { DetailsVentaComponent } from './venta/details-venta/details-venta.component';
 import { FormVentaComponent } from './venta/form-venta/form-venta.component';
+import { ReporteVentaComponent } from './reporte-venta/reporte-venta.component';
+import { ReporteCompraComponent } from './reporte-compra/reporte-compra.component';
+import { ReporteDetVentasComponent } from './reporte-venta/reporte-det-ventas/reporte-det-ventas.component';
+import { ReporteDetComprasComponent } from './reporte-compra/reporte-det-compras/reporte-det-compras.component';
+import { AnuladasComponent } from './venta/anuladas/anuladas.component';
 
 
 
 @NgModule({
-  declarations: [CategoriaComponent, AddCategoriaComponent, EditCategoriaComponent, FormCategoriaComponent, TipoDocumentoComponent, AddTipoDocumentoComponent, EditTipoDocumentoComponent, FormTipoDocumentoComponent, GastoComponent, AddGastoComponent, EditGastoComponent, FormGastoComponent, EmpleadoComponent, AddEmpleadoComponent, EditEmpleadoComponent, FormEmpleadoComponent, ClienteComponent,AddClienteComponent,EditClienteComponent,FormClienteComponent, ProductoComponent, FormProductoComponent, CompraComponent, FormCompraComponent, ProveedorComponent, AddProveedorComponent, EditProveedorComponent, FormProveedorComponent, DetailsCompraComponent, VentaComponent, DetailsVentaComponent, FormVentaComponent],
+  declarations: [CategoriaComponent, AddCategoriaComponent, EditCategoriaComponent, FormCategoriaComponent, TipoDocumentoComponent, AddTipoDocumentoComponent, EditTipoDocumentoComponent, FormTipoDocumentoComponent, GastoComponent, AddGastoComponent, EditGastoComponent, FormGastoComponent, EmpleadoComponent, AddEmpleadoComponent, EditEmpleadoComponent, FormEmpleadoComponent, ClienteComponent,AddClienteComponent,EditClienteComponent,FormClienteComponent, ProductoComponent, FormProductoComponent, CompraComponent, FormCompraComponent, ProveedorComponent, AddProveedorComponent, EditProveedorComponent, FormProveedorComponent, DetailsCompraComponent, VentaComponent, DetailsVentaComponent, FormVentaComponent, ReporteVentaComponent, ReporteCompraComponent, ReporteDetVentasComponent, ReporteDetComprasComponent, AnuladasComponent],
   imports: [
     PagesRoutingModule,
     CommonModule,

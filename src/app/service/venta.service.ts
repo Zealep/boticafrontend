@@ -22,6 +22,13 @@ export class VentaService {
     );
   }
 
+  getAnuladas(){
+    return this.http.get<Venta[]>(`${this.url}/anuladas`)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
   getById(id: number) {
     return this.http.get<Venta>(`${this.url}/find/${id}`);
   }

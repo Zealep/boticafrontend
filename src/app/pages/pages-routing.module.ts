@@ -1,3 +1,7 @@
+import { AnuladasComponent } from './venta/anuladas/anuladas.component';
+import { ReporteDetComprasComponent } from './reporte-compra/reporte-det-compras/reporte-det-compras.component';
+import { ReporteDetVentasComponent } from './reporte-venta/reporte-det-ventas/reporte-det-ventas.component';
+import { ReporteVentaComponent } from './reporte-venta/reporte-venta.component';
 import { FormVentaComponent } from './venta/form-venta/form-venta.component';
 import { EditProveedorComponent } from './proveedor/edit-proveedor/edit-proveedor.component';
 import { AddProveedorComponent } from './proveedor/add-proveedor/add-proveedor.component';
@@ -25,6 +29,7 @@ import { GastoComponent } from './gasto/gasto.component';
 import { EditGastoComponent } from './gasto/edit-gasto/edit-gasto.component';
 import { ProveedorComponent } from './proveedor/proveedor.component';
 import { VentaComponent } from './venta/venta.component';
+import { ReporteCompraComponent } from './reporte-compra/reporte-compra.component';
 
 const routes: Routes = [
   {
@@ -135,8 +140,30 @@ const routes: Routes = [
           {
             path: 'venta/form',
             component: FormVentaComponent
-          }
+          },
 
+          {
+            path: 'venta-anuladas',
+            component: AnuladasComponent
+          },
+
+          //REPORTES
+          {
+            path: 'report-ventas',
+            component: ReporteVentaComponent
+          },
+          {
+            path: 'report-ventas-det',
+            component: ReporteDetVentasComponent
+          },
+          {
+            path: 'report-compras',
+            component: ReporteCompraComponent
+          },
+          {
+            path: 'report-compras-det',
+            component: ReporteDetComprasComponent
+          },
     ]
 
   }

@@ -15,14 +15,14 @@ registerLocaleData(es);
 @NgModule({
   declarations: [
     AppComponent,
-    PagesComponent  
+    PagesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    PagesModule
+
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "es-ES"},

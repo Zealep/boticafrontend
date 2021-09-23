@@ -1,6 +1,11 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <h1>SYSCLIDENT</h1>
+      <h1>
+        <a >
+          <img src="assets/images/farmaceutico.png" alt="MARIFARMA" />
+          MARIFARMA
+        </a>
+      </h1>
       <span class="menu-spacer"></span>
 
       <button mat-button [matMenuTriggerFor]="menuCompra">
@@ -17,6 +22,8 @@
         <mat-icon>arrow_drop_down</mat-icon></button>
       <mat-menu #menuVenta="matMenu">
         <button mat-menu-item [routerLink]="'/pages/venta'">Registrar Venta</button>
+        <button mat-menu-item [routerLink]="'/pages/venta-anuladas'">Ventas Anuladas</button>
+
 
       </mat-menu>
 
@@ -39,6 +46,17 @@
         <button mat-menu-item [routerLink]="'/pages/cliente'">Clientes</button>
         <button mat-menu-item [routerLink]="'/pages/gasto'">Gastos</button>
         <button mat-menu-item [routerLink]="'/pages/proveedor'">Proveedores</button>
+
+      </mat-menu>
+
+      <button mat-button [matMenuTriggerFor]="menuReportes">
+        Reportes
+        <mat-icon>arrow_drop_down</mat-icon></button>
+      <mat-menu #menuReportes="matMenu">
+        <button mat-menu-item [routerLink]="'/pages/report-ventas'">Reporte de ventas</button>
+        <button mat-menu-item [routerLink]="'/pages/report-ventas-det'">Reporte Detalles de ventas</button>
+        <button mat-menu-item [routerLink]="'/pages/report-compras'">Reporte de compras</button>
+        <button mat-menu-item [routerLink]="'/pages/report-compras-det'">Reporte Detalles de compras</button>
 
       </mat-menu>
 
