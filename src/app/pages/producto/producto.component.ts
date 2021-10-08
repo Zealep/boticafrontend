@@ -18,7 +18,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class ProductoComponent implements OnInit {
 
   list: Producto[] = [];
-  displayedColumns: string[] = [ 'categoria', 'codigo','nombre','descripcion','stock','stockMin','precioVenta','acciones'];
+  displayedColumns: string[] = [ 'categoria', 'codigo','nombre','nombreComercial','fechaElaboracion','fechaVencimiento','stock','stockMin','precioVenta','acciones'];
   dataSource: MatTableDataSource<Producto>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;

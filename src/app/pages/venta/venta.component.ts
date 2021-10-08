@@ -1,3 +1,4 @@
+import { ViewDetailsComponent } from './view-details/view-details.component';
 import { ConfirmDialogModel } from './../../shared/models/confirm-dialog-model';
 import { ConfirmDialogComponent } from './../../shared/components/confirm-dialog/confirm-dialog.component';
 import { MatTableDataSource } from '@angular/material/table';
@@ -28,7 +29,8 @@ export class VentaComponent implements OnInit {
     private snackBar: MatSnackBar,
     public route: ActivatedRoute ,
     private dialog: MatDialog,
-    private router: Router) { }
+    private router: Router,
+    ) { }
 
   ngOnInit(): void {
     this.load();
@@ -78,6 +80,21 @@ export class VentaComponent implements OnInit {
   callEdit(idVenta: number){
     this.router.navigate(['/pages/venta/form',{sell:idVenta}]);
   }
+
+  view(row:any){
+    console.log('row',row);
+    const dialogRef = this.dialog.open(ViewDetailsComponent, {
+      width: '800px',
+      data:{idVenta:row.idVenta}
+    });
+
+    dialogRef.afterClosed()
+      .subscribe(result => {
+        if(result) {
+        }
+      });
+  }
+
 
 }
 

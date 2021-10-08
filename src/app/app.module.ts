@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PagesComponent } from './pages/pages.component';
 import { registerLocaleData } from '@angular/common';
 
+
 registerLocaleData(es);
 
 @NgModule({
@@ -22,8 +23,7 @@ registerLocaleData(es);
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-
-  ],
+    PagesModule,  ],
   providers: [
     { provide: LOCALE_ID, useValue: "es-ES"},
   ],

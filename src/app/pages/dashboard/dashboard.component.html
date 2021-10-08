@@ -1,0 +1,81 @@
+<div class="container-info">
+  <mat-card [style.background]="'#0069c0'" [style.color]="'white'">
+    <mat-card-title>S/. {{todayVentas == null ? 0: todayVentas}} soles</mat-card-title>
+    <mat-card-subtitle>VENTAS DEL DIA</mat-card-subtitle>
+  </mat-card>
+
+
+  <mat-card [style.background]="'#e57373'" [style.color]="'white'">
+    <mat-card-title>S/. {{todayCompras == null ? 0: todayCompras}} soles</mat-card-title>
+    <mat-card-subtitle>COMPRAS DEL DIA</mat-card-subtitle>
+  </mat-card>
+
+
+  <mat-card [style.background]="'#26a69a'" [style.color]="'white'">
+    <mat-card-title>S/. {{todayGastos == null ? 0: todayGastos}} soles</mat-card-title>
+    <mat-card-subtitle>GASTOS DEL DIA</mat-card-subtitle>
+  </mat-card>
+</div>
+
+
+<div class="container-cards-1">
+
+  <mat-card class="cards-item" >
+      <mat-card-header>
+          <img mat-card-sm-image src="./assets/images/en-stock.svg">
+          <mat-card-title><span class="span-number">{{stockMinimoSize}}</span><br><br><span>Productos en stock minimo</span></mat-card-title>
+        </mat-card-header>
+  </mat-card>
+
+  <mat-card class="cards-item">
+      <mat-card-header>
+          <img mat-card-sm-image src="./assets/images/stock-limitado.svg">
+          <mat-card-title><span class="span-number">{{noStockSize}}</span><br><br><span>Productos sin stock</span></mat-card-title>
+        </mat-card-header>
+  </mat-card>
+
+
+  <mat-card class="cards-item" >
+      <mat-card-header>
+          <img mat-card-sm-image src="./assets/images/cesta-de-la-compra.svg">
+          <mat-card-title><span class="span-number">{{comprasLastWeekSize}}</span><br><br><span>Productos por vencer</span></mat-card-title>
+        </mat-card-header>
+  </mat-card>
+
+
+  <mat-card class="cards-item" >
+      <mat-card-header>
+          <img mat-card-sm-image src="./assets/images/compras.svg">
+          <mat-card-title><span class="span-number">{{comprasLastMonthSize}}</span><br><br><span>Productos TOP ventas</span></mat-card-title>
+        </mat-card-header>
+  </mat-card>
+
+
+</div>
+
+
+<div class="container-graficos" *ngIf="viewBarra | async as results">
+<ngx-charts-bar-vertical class="grafico-item"
+[view]="view"
+[scheme]="colorScheme"
+[results]="results"
+[gradient]="gradient"
+[xAxis]="showXAxis"
+[yAxis]="showYAxis"
+[legend]="showLegend"
+[showXAxisLabel]="showXAxisLabel"
+[showYAxisLabel]="showYAxisLabel"
+[xAxisLabel]="xAxisLabel"
+[yAxisLabel]="yAxisLabel"
+(select)="onSelect($event)">
+</ngx-charts-bar-vertical>
+
+<ngx-charts-pie-grid *ngIf="viewPie | async as results" class="grafico-item"
+[view]="view"
+[scheme]="colorScheme"
+[results]="results">
+</ngx-charts-pie-grid>
+
+</div>
+
+

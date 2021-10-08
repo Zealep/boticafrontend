@@ -3,44 +3,85 @@
   <mat-card-content>
     <form [formGroup]="form">
 
-      <mat-form-field>
-        <mat-label>Categorias</mat-label>
-        <mat-select formControlName="categoria" required>
-            <mat-option *ngFor="let categoria of categorias" [value]="categoria.idCategoria">
-               {{categoria.nombre}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
+      <div class="fila">
 
-      <mat-form-field>
-        <mat-label>Codigo</mat-label>
-        <input type="text" matInput formControlName="codigo" required>
-      </mat-form-field>
+          <mat-form-field>
+            <mat-label>Categorias</mat-label>
+            <mat-select formControlName="categoria" required>
+              <mat-option *ngFor="let categoria of categorias" [value]="categoria.idCategoria">
+                {{categoria.nombre}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
-      <mat-form-field >
-        <mat-label>Nombre</mat-label>
-        <input type="text" matInput formControlName="nombre" required>
-      </mat-form-field>
 
-      <mat-form-field >
-        <mat-label>Descripcion</mat-label>
-        <textarea type="text" matInput formControlName="descripcion"></textarea>
-      </mat-form-field>
 
-      <mat-form-field >
-        <mat-label>Stock</mat-label>
-        <input type="number" matInput formControlName="stock" required>
-      </mat-form-field>
+          <mat-form-field>
+            <mat-label>Codigo</mat-label>
+            <input type="text" matInput formControlName="codigo" required>
+          </mat-form-field>
 
-      <mat-form-field >
-        <mat-label>Stock Minimo</mat-label>
-        <input type="number" matInput formControlName="stockMinimo" required>
-      </mat-form-field>
 
-      <mat-form-field >
-        <mat-label>Precio Venta</mat-label>
-        <input type="number" matInput formControlName="precioVenta" required>
-      </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Nombre Generico</mat-label>
+            <input type="text" matInput formControlName="nombre" required>
+          </mat-form-field>
+
+
+          <mat-form-field>
+            <mat-label>Nombre Comercial</mat-label>
+            <input type="text" matInput formControlName="nombreComercial" required>
+          </mat-form-field>
+
+
+
+
+        <mat-form-field>
+          <mat-label>Fecha Elaboracion</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="fechaElaboracion" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+
+
+        <mat-form-field>
+          <mat-label>Fecha Vencimiento</mat-label>
+          <input matInput [matDatepicker]="picker2" formControlName="fechaVencimiento" required>
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+
+
+
+
+
+        <mat-form-field>
+          <mat-label>Laboratorio</mat-label>
+          <input type="text" matInput formControlName="laboratorio">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Descripcion</mat-label>
+          <input type="text" matInput formControlName="descripcion">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Stock</mat-label>
+          <input type="number" matInput formControlName="stock" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Stock Minimo</mat-label>
+          <input type="number" matInput formControlName="stockMinimo" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Precio Venta</mat-label>
+          <input type="number" matInput formControlName="precioVenta" required>
+        </mat-form-field>
+      </div>
 
     </form>
   </mat-card-content>
@@ -50,8 +91,8 @@
       <span>Registrar</span>
     </button>
     <button class="btn-form" (click)="cancelar()" mat-raised-button>
-        <mat-icon>cancel</mat-icon>
-       <span>Cancelar</span>
+      <mat-icon>cancel</mat-icon>
+      <span>Cancelar</span>
     </button>
   </mat-card-actions>
 </mat-card>

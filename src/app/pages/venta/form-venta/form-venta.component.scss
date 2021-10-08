@@ -2,16 +2,11 @@ mat-card,form{
   width: 100%;
 }
 
-mat-form-field {
-  width: 50%;
-  margin: 0.5rem;
-}
-
-button{
-    width: 30%;
+mat-form-field, button{
+  margin-left: 1rem;
+  margin-right: 1rem;
 
 }
-
 table {
   width: 100%;
 }
@@ -22,4 +17,11 @@ tr.mat-footer-row {
 
 .mat-table-sticky {
   border-top: 1px solid #e0e0e0;
+}
+.stock-actual{
+  color: #0276aa;
+}
+
+.table-container{
+  margin-top: 1rem;
 }

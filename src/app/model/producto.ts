@@ -8,5 +8,9 @@ export class Producto{
     stock: number;
     stockMinimo: number;
     precioVenta: number;
-    
+    fechaElaboracion: Date;
+    fechaVencimiento: Date;
+    laboratorio: string;
+    nombreComercial: string;
+
 }

@@ -16,7 +16,7 @@ export class ReporteDetVentasComponent implements OnInit {
 
   reporteDetalleVentas: ReporteDetalleVentas[] = [];
   dataSource: MatTableDataSource<ReporteDetalleVentas>;
-  displayedColumns: string[] = ['tipoDocumento', 'cliente','empleado', 'codigo', 'fechaVenta', 'categoria','producto','precio','cantidad','total'];
+  displayedColumns: string[] = ['cliente','empleado', 'codigo', 'fechaVenta', 'categoria','producto','precio','cantidad','total'];
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

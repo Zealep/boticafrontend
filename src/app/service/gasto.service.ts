@@ -15,11 +15,11 @@ export class GastoService {
 
   constructor(private http: HttpClient) { }
 
-  getAll() {        
+  getAll() {
     return this.http.get<Gasto[]>(`${this.url}/list`)
     .pipe(
       catchError(this.handleError)
-    );  
+    );
   }
 
   getById(id: number) {
@@ -33,7 +33,7 @@ export class GastoService {
       catchError(this.handleError)
     );
   }
-  
+
 
   update(x: Gasto) {
     return this.http.put<Respuesta>(`${this.url}/save`, x)
@@ -44,6 +44,20 @@ export class GastoService {
 
   eliminar(id: number) {
     return this.http.delete<Respuesta>(`${this.url}/delete/${id}`)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getMes(){
+    return this.http.get<number>(`${this.url}/month`)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getHoy(){
+    return this.http.get<number>(`${this.url}/today`)
     .pipe(
       catchError(this.handleError)
     );

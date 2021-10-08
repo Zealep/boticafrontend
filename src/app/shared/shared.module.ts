@@ -1,3 +1,5 @@
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material/material.module';
 import { NgModule } from '@angular/core';
@@ -8,11 +10,12 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
 
 
 @NgModule({
-  declarations: [HeaderComponent, ConfirmDialogComponent],
+  declarations: [HeaderComponent, ConfirmDialogComponent, LoginComponent],
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
   ],
   exports:[
     MaterialModule,

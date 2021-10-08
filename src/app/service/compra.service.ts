@@ -5,6 +5,7 @@ import { HOST } from './../shared/constants';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
+import { DetalleCompra } from '../model/detalle-compra';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,11 @@ export class CompraService {
 
   constructor(private http: HttpClient) { }
 
-  getAll() {        
+  getAll() {
     return this.http.get<Compra[]>(`${this.url}/list`)
     .pipe(
       catchError(this.handleError)
-    );  
+    );
   }
 
   getById(id: number) {
@@ -33,7 +34,7 @@ export class CompraService {
       catchError(this.handleError)
     );
   }
-  
+
 
   update(x: Compra) {
     return this.http.put<Respuesta>(`${this.url}/save`, x)
@@ -44,6 +45,34 @@ export class CompraService {
 
   eliminar(id: number) {
     return this.http.delete<Respuesta>(`${this.url}/delete/${id}`)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getLastWeek() {
+    return this.http.get<DetalleCompra[]>(`${this.url}/last-week`)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getLastMonth() {
+    return this.http.get<DetalleCompra[]>(`${this.url}/last-month`)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getMes(){
+    return this.http.get<number>(`${this.url}/month`)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getHoy(){
+    return this.http.get<number>(`${this.url}/today`)
     .pipe(
       catchError(this.handleError)
     );

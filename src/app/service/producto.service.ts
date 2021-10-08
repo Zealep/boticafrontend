@@ -15,11 +15,11 @@ export class ProductoService {
 
   constructor(private http: HttpClient) { }
 
-  getAll() {        
+  getAll() {
     return this.http.get<Producto[]>(`${this.url}/list`)
     .pipe(
       catchError(this.handleError)
-    );  
+    );
   }
 
   getById(id: number) {
@@ -33,10 +33,10 @@ export class ProductoService {
       catchError(this.handleError)
     );
   }
-  
+
 
   update(x: Producto) {
-    return this.http.put<Respuesta>(`${this.url}/save`, x)
+    return this.http.post<Respuesta>(`${this.url}/update`, x)
     .pipe(
       catchError(this.handleError)
     );
@@ -44,6 +44,20 @@ export class ProductoService {
 
   eliminar(id: number) {
     return this.http.delete<Respuesta>(`${this.url}/delete/${id}`)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getStockMinimos() {
+    return this.http.get<Producto[]>(`${this.url}/stock-minimums`)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getNoStock() {
+    return this.http.get<Producto[]>(`${this.url}/no-stocks`)
     .pipe(
       catchError(this.handleError)
     );

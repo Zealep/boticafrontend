@@ -1,0 +1,45 @@
+.container-cards-1{
+  display: flex;
+}
+mat-card{
+  margin: 20px;
+  flex: 1 1 0px;
+}
+.cards-item{
+  cursor: pointer;
+}
+
+mat-card-title{
+  margin: 12px;
+  text-align: center;
+}
+
+.container-graficos{
+  display: flex;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.span-number{
+  color:#0069c0;
+}
+span{
+  color: #6ec6ff;
+}
+.grafico-item{
+  margin: 2rem;
+  flex: 1 1 0px;
+}
+
+.container-info{
+  display: flex;
+}
+
+.container-info mat-card{
+  flex: 1 1 0px;
+}
+
+.container-info mat-card mat-card-subtitle{
+  color:white;
+  text-align: center;
+}

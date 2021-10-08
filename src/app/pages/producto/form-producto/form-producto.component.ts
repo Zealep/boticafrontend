@@ -24,7 +24,11 @@ export class FormProductoComponent implements OnInit {
     descripcion: new FormControl(''),
     stock: new FormControl(''),
     stockMinimo: new FormControl(''),
-    precioVenta: new FormControl('')
+    precioVenta: new FormControl(''),
+    fechaElaboracion: new FormControl(''),
+    fechaVencimiento: new FormControl(''),
+    laboratorio: new FormControl(''),
+    nombreComercial: new FormControl('')
   });
 
 
@@ -53,7 +57,7 @@ export class FormProductoComponent implements OnInit {
 
     let producto = new Producto();
     let categoria = new Categoria();
-    if(this.idProducto!=0){
+    if (this.idProducto != 0) {
       producto.idProducto = this.idProducto;
     }
     categoria.idCategoria = this.form.get('categoria').value;
@@ -64,40 +68,54 @@ export class FormProductoComponent implements OnInit {
     producto.stock = this.form.get('stock').value;
     producto.stockMinimo = this.form.get('stockMinimo').value;
     producto.precioVenta = this.form.get('precioVenta').value;
+    producto.fechaElaboracion = this.form.get('fechaElaboracion').value;
+    producto.fechaVencimiento = this.form.get('fechaVencimiento').value;
+    producto.laboratorio = this.form.get('laboratorio').value;
+    producto.nombreComercial = this.form.get('nombreComercial').value;
 
-    this.productoService.save(producto)
-      .subscribe(result => {
-        this.router.navigate(['/pages/producto']);
-        if(this.idProducto==0){
+    if (this.idProducto == 0) {
+      this.productoService.save(producto)
+        .subscribe(result => {
+          this.router.navigate(['/pages/producto']);
           this.snackBar.open('Producto fue registrado', 'Cerrar', {
             duration: 3000
           });
-        }
-        else{
-          this.snackBar.open('Producto fue modificado', 'Cerrar', {
+        })
+    }
+    else {
+      this.productoService.update(producto)
+        .subscribe(result => {
+          this.router.navigate(['/pages/producto']);
+
+          this.snackBar.open('Producto fue actualizado', 'Cerrar', {
             duration: 3000
           });
-        }
-      });
-   }
+        })
+    }
 
-   loadProduct(id:number){
-      if(id!=0){
-        this.productoService.getById(id)
-        .subscribe(r =>{
-        this.form.controls['categoria'].setValue(r.categoria.idCategoria);
-        this.form.controls['codigo'].setValue(r.codigo);
-        this.form.controls['nombre'].setValue(r.nombre);
-        this.form.controls['descripcion'].setValue(r.descripcion);
-        this.form.controls['stock'].setValue(r.stock);
-        this.form.controls['stockMinimo'].setValue(r.stockMinimo);
-        this.form.controls['precioVenta'].setValue(r.precioVenta);
+  }
+
+  loadProduct(id: number) {
+    if (id != 0) {
+      this.productoService.getById(id)
+        .subscribe(r => {
+          this.form.controls['categoria'].setValue(r.categoria.idCategoria);
+          this.form.controls['codigo'].setValue(r.codigo);
+          this.form.controls['nombre'].setValue(r.nombre);
+          this.form.controls['descripcion'].setValue(r.descripcion);
+          this.form.controls['stock'].setValue(r.stock);
+          this.form.controls['stockMinimo'].setValue(r.stockMinimo);
+          this.form.controls['precioVenta'].setValue(r.precioVenta);
+          this.form.controls['fechaElaboracion'].setValue(r.fechaElaboracion);
+          this.form.controls['fechaVencimiento'].setValue(r.fechaVencimiento);
+          this.form.controls['laboratorio'].setValue(r.laboratorio);
+          this.form.controls['nombreComercial'].setValue(r.nombreComercial);
         })
 
-      }
-   }
+    }
+  }
 
   cancelar() {
-        this.router.navigate(['/pages/producto']);
-      }
+    this.router.navigate(['/pages/producto']);
+  }
 }

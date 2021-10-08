@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
       <h1>
-        <a >
+        <a [routerLink]="'/pages/dashboard'">
           <img src="assets/images/farmaceutico.png" alt="MARIFARMA" />
           MARIFARMA
         </a>
@@ -10,7 +10,7 @@
 
       <button mat-button [matMenuTriggerFor]="menuCompra">
         Compras
-        <mat-icon>arrow_drop_down</mat-icon></button>
+        <mat-icon>shopping_cart</mat-icon></button>
       <mat-menu #menuCompra="matMenu">
         <button mat-menu-item [routerLink]="'/pages/compra'">Registrar Compra</button>
 
@@ -19,7 +19,7 @@
 
       <button mat-button [matMenuTriggerFor]="menuVenta">
         Ventas
-        <mat-icon>arrow_drop_down</mat-icon></button>
+        <mat-icon>attach_money</mat-icon></button>
       <mat-menu #menuVenta="matMenu">
         <button mat-menu-item [routerLink]="'/pages/venta'">Registrar Venta</button>
         <button mat-menu-item [routerLink]="'/pages/venta-anuladas'">Ventas Anuladas</button>
@@ -30,7 +30,7 @@
 
       <button mat-button [matMenuTriggerFor]="menuInventario">
         Almacen
-        <mat-icon>arrow_drop_down</mat-icon></button>
+        <mat-icon>store</mat-icon></button>
       <mat-menu #menuInventario="matMenu">
         <button mat-menu-item [routerLink]="'/pages/producto'">Inventario</button>
         <button mat-menu-item [routerLink]="'/pages/categoria'">Categorias</button>
@@ -39,7 +39,7 @@
 
       <button mat-button [matMenuTriggerFor]="menuAdministracion">
         Administracion
-        <mat-icon>arrow_drop_down</mat-icon></button>
+        <mat-icon>settings</mat-icon></button>
       <mat-menu #menuAdministracion="matMenu">
         <button mat-menu-item [routerLink]="'/pages/empleado'">Empleados</button>
         <button mat-menu-item [routerLink]="'/pages/tipo-documento'">Tipos Documentos</button>
@@ -51,7 +51,7 @@
 
       <button mat-button [matMenuTriggerFor]="menuReportes">
         Reportes
-        <mat-icon>arrow_drop_down</mat-icon></button>
+        <mat-icon>bar_chart</mat-icon></button>
       <mat-menu #menuReportes="matMenu">
         <button mat-menu-item [routerLink]="'/pages/report-ventas'">Reporte de ventas</button>
         <button mat-menu-item [routerLink]="'/pages/report-ventas-det'">Reporte Detalles de ventas</button>
@@ -59,6 +59,13 @@
         <button mat-menu-item [routerLink]="'/pages/report-compras-det'">Reporte Detalles de compras</button>
 
       </mat-menu>
+
+      <span class="example-spacer"></span>
+
+         <span class="user"><mat-icon>account_circle</mat-icon>{{apellidos}} {{nombres}}</span>
+         <button mat-button (click)="salir()">
+
+          <mat-icon>logout</mat-icon></button>
 
     </mat-toolbar-row>
 

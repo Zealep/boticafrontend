@@ -2,12 +2,24 @@ mat-card,form{
   width: 100%;
 }
 
-mat-form-field {
-  width: 50%;
-  margin: 0.5rem;
-}
+
 
 button{
     width: 30%;
 
+}
+
+.fila{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  flex: 33.33%;
+}
+
+mat-form-field{
+  margin: 1rem;
 }

@@ -1,3 +1,4 @@
+import { LoginService } from './../../../service/login.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  apellidos: string;
+  nombres: string
 
-  constructor() { }
+  constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.apellidos = sessionStorage.getItem('apellidos');
+    this.nombres = sessionStorage.getItem('nombres');
+  }
+
+  salir(){
+    this.loginService.cerrarSesion();
   }
 
 }

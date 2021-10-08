@@ -1,7 +1,9 @@
+import { ResponseVenta } from './../model/dto/response-venta';
+import { DetalleVenta } from './../model/detalle-venta';
 import { Respuesta } from './../model/respuesta';
 import { catchError } from 'rxjs/operators';
 import { Venta } from './../model/venta';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { HOST } from './../shared/constants';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
@@ -17,6 +19,13 @@ export class VentaService {
 
   getAll() {
     return this.http.get<Venta[]>(`${this.url}/list`)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getDetailsByVenta(id: number) {
+    return this.http.get<DetalleVenta[]>(`${this.url}/find/details/${id}`)
     .pipe(
       catchError(this.handleError)
     );
@@ -54,6 +63,39 @@ export class VentaService {
     .pipe(
       catchError(this.handleError)
     );
+  }
+
+  getMes(){
+    return this.http.get<number>(`${this.url}/month`)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getHoy(){
+    return this.http.get<number>(`${this.url}/today`)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getUltimaVenta(){
+    return this.http.get<number>(`${this.url}/lastCodigo`)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getFormatCodigoVenta(codigo:any){
+    let parms = new HttpParams();
+    parms = parms.append('codigo',codigo);
+    return this.http.get<ResponseVenta>(`${this.url}/formatCodigoVenta`,
+    {
+      params:parms,
+
+    },
+
+    )
   }
 
   private handleError(error: HttpErrorResponse) {

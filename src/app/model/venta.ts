@@ -5,7 +5,6 @@ import { TipoDocumento } from './tipo-documento';
 export class Venta{
 
     idVenta: number;
-    tipoDocumento: TipoDocumento;
     cliente: Cliente;
     empleado: Empleado;
     codigo: string;
@@ -15,5 +14,7 @@ export class Venta{
     igv: number;
     total: number;
     detallesVenta: DetalleVenta[];
+    nombreCliente: string;
+    documento: string;
 
 }

@@ -1,3 +1,4 @@
+import { ReporteMes } from './../model/dto/reporte-mes';
 import { ReporteDetalleVentas } from './../model/dto/reporte-det-ventas';
 import { ReporteCompras } from './../model/dto/reporte-compras';
 import { ParamsReporteComprasDTO } from './../model/dto/params-reporte-compras';
@@ -76,6 +77,21 @@ export class ReportesService {
   });
   }
 
+  getVentasTotalesMes() {
+
+    return this.http.get<ReporteMes[]>(`${this.url}/ventas-mes`)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getComprasTotalesMes() {
+
+    return this.http.get<ReporteMes[]>(`${this.url}/compras-mes`)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
 
   private handleError(error: HttpErrorResponse) {
     if(error.error instanceof ErrorEvent) {

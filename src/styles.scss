@@ -5,11 +5,15 @@ body {
   font-size: smaller;
   height: 100%;
 
-  background: #CFCDD2;  /* fallback for old browsers */
+  background: #CAFAFE;  /* fallback for old browsers */
   //background: -webkit-linear-gradient(to right, #6FB1FC, #4364F7, #0052D4);  /* Chrome 10-25, Safari 5.1-6 */
   //background: linear-gradient(to right, #6FB1FC, #4364F7, #0052D4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   margin: 0;
+}
+
+h1{
+  color:#03a9f4;
 }
 
  mat-card {
@@ -19,6 +23,7 @@ body {
   th.mat-header-cell {
     font-weight: bold;
     text-transform: uppercase;
-    color: black;
+    background-color:#0276aa;
+    color: white;
   }
 

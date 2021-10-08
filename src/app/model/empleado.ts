@@ -11,5 +11,8 @@ export class Empleado{
     dni: string;
     fechaIngreso: Date;
     sueldo: number;
+    usuario:string;
+    clave: string;
+    rol: string;
 
 }

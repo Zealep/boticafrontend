@@ -1,3 +1,4 @@
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { AnuladasComponent } from './venta/anuladas/anuladas.component';
 import { ReporteDetComprasComponent } from './reporte-compra/reporte-det-compras/reporte-det-compras.component';
 import { ReporteDetVentasComponent } from './reporte-venta/reporte-det-ventas/reporte-det-ventas.component';
@@ -36,6 +37,11 @@ const routes: Routes = [
     path: '',
     component: PagesComponent,
     children: [
+      {
+        path: '', //
+        pathMatch: 'full',
+        redirectTo: 'dashboard'
+      },
       //CRUD CATEGORIA
       {
         path: 'categoria',
@@ -164,6 +170,10 @@ const routes: Routes = [
             path: 'report-compras-det',
             component: ReporteDetComprasComponent
           },
+          {
+            path: 'dashboard',
+            component: DashboardComponent
+          }
     ]
 
   }
