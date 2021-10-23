@@ -1,3 +1,4 @@
+import {ImprimirDTO } from './../model/dto/imprimir';
 import { ResponseVenta } from './../model/dto/response-venta';
 import { DetalleVenta } from './../model/detalle-venta';
 import { Respuesta } from './../model/respuesta';
@@ -96,6 +97,13 @@ export class VentaService {
     },
 
     )
+  }
+
+  imprimir(t: ImprimirDTO){
+    console.log('service', t);
+    return this.http.post(`${this.url}/imprimir`, t,{
+      responseType: 'blob'
+    });
   }
 
   private handleError(error: HttpErrorResponse) {

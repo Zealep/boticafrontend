@@ -63,6 +63,20 @@ export class ProductoService {
     );
   }
 
+  getExpirateThreeMonths() {
+    return this.http.get<Producto[]>(`${this.url}/expirate-three-months`)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getTopSixMonths() {
+    return this.http.get<Producto[]>(`${this.url}/top-six-months`)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     if(error.error instanceof ErrorEvent) {
       console.log('Client error', error.error.message);

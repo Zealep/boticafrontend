@@ -1,84 +1,109 @@
 <mat-card>
-    <mat-card-title>{{title}}</mat-card-title>
-    <mat-card-content>
-      <form [formGroup]="form">
+  <mat-card-title>{{title}}</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form">
+
+      <div class="fila">
 
         <mat-form-field>
-            <mat-label>Apellidos</mat-label>
-            <input type="text" matInput formControlName="apellidos" required>
+          <mat-label>Apellidos</mat-label>
+          <input type="text" matInput formControlName="apellidos" required>
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Nombres</mat-label>
-            <input type="text" matInput formControlName="nombres" required>
+          <mat-label>Nombres</mat-label>
+          <input type="text" matInput formControlName="nombres" required>
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>DNI</mat-label>
-            <input type="text" matInput formControlName="dni" >
-          </mat-form-field>
+          <mat-label>DNI</mat-label>
+          <input type="text" matInput formControlName="dni">
+        </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Sexo</mat-label>
-            <mat-select formControlName="sexo">
-              <mat-option value="H">Hombre
-              </mat-option>
-              <mat-option value="M">Mujer
+          <mat-label>Sexo</mat-label>
+          <mat-select formControlName="sexo">
+            <mat-option value="H">Hombre
             </mat-option>
-            </mat-select>
-          </mat-form-field>
+            <mat-option value="M">Mujer
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Fecha nacimiento</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento" required>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
+          <mat-label>Fecha nacimiento</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-  
+
         <mat-form-field>
           <mat-label>Direccion</mat-label>
-          <input type="text" matInput formControlName="direccion" >
+          <input type="text" matInput formControlName="direccion">
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Telefono</mat-label>
-            <input type="text" matInput formControlName="telefono" >
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Celular</mat-label>
-            <input type="text" matInput formControlName="celular" >
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Correo</mat-label>
-            <input type="text" matInput formControlName="correo" >
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Fecha Ingreso</mat-label>
-            <input matInput [matDatepicker]="picker2" formControlName="fechaIngreso">
-            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2></mat-datepicker>
+          <mat-label>Telefono</mat-label>
+          <input type="text" matInput formControlName="telefono">
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Sueldo</mat-label>
-            <input type="number" matInput formControlName="sueldo" >
-            <span matPrefix>S/. &nbsp;</span>
+          <mat-label>Celular</mat-label>
+          <input type="text" matInput formControlName="celular">
         </mat-form-field>
-  
-      </form>
-    </mat-card-content>
-    <mat-card-actions>
-      <button class="btn-form" [disabled]="form.invalid" (click)="onSubmit()" mat-raised-button color="primary">
-        <mat-icon>save</mat-icon>
-        <span>{{labelSubmit}}</span>
-      </button>
-      <button class="btn-form" (click)="onCancel()" mat-raised-button>
-          <mat-icon>cancel</mat-icon>
-         <span>Cancelar</span>
-      </button>
-    </mat-card-actions>
-  </mat-card>
-  
+
+        <mat-form-field>
+          <mat-label>Correo</mat-label>
+          <input type="text" matInput formControlName="correo">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Usuario</mat-label>
+          <input type="text" matInput formControlName="usuario" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Clave</mat-label>
+          <input type="password" matInput formControlName="clave" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Rol</mat-label>
+          <mat-select formControlName="rol" name="food" required>
+            <mat-option value="ADMIN">
+              ADMIN
+            </mat-option>
+            <mat-option value="USER">
+              USER
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Fecha Ingreso</mat-label>
+          <input matInput [matDatepicker]="picker2" formControlName="fechaIngreso">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Sueldo</mat-label>
+          <input type="number" matInput formControlName="sueldo">
+          <span matPrefix>S/. &nbsp;</span>
+        </mat-form-field>
+
+      </div>
+
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button class="btn-form" [disabled]="form.invalid" (click)="onSubmit()" mat-raised-button color="primary">
+      <mat-icon>save</mat-icon>
+      <span>{{labelSubmit}}</span>
+    </button>
+    <button class="btn-form" (click)="onCancel()" mat-raised-button>
+      <mat-icon>cancel</mat-icon>
+      <span>Cancelar</span>
+    </button>
+  </mat-card-actions>
+</mat-card>

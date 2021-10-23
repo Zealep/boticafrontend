@@ -1,3 +1,7 @@
+import { ImprimirComponent } from './imprimir/imprimir.component';
+import { ProductoDTO } from './../../model/dto/producto-list';
+import { element } from 'protractor';
+import { ImprimirDTO } from './../../model/dto/imprimir';
 import { ViewDetailsComponent } from './view-details/view-details.component';
 import { ConfirmDialogModel } from './../../shared/models/confirm-dialog-model';
 import { ConfirmDialogComponent } from './../../shared/components/confirm-dialog/confirm-dialog.component';
@@ -19,6 +23,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class VentaComponent implements OnInit {
 
   list: Venta[] = [];
+  listProd: ProductoDTO[] = [];
   displayedColumns: string[] = [ 'cliente', 'codigo','fecha','subtotal','igv','total','acciones'];
   dataSource: MatTableDataSource<Venta>;
 
@@ -93,6 +98,35 @@ export class VentaComponent implements OnInit {
         if(result) {
         }
       });
+  }
+
+  print(element:Venta){
+
+    let imprimir = new ImprimirDTO();
+    imprimir.cliente = element.nombreCliente;
+    imprimir.igv = element.igv;
+    imprimir.numero = element.codigoLargo;
+    imprimir.subtotal = element.subTotal;
+    imprimir.total = element.total;
+
+
+    element.detallesVenta.forEach(x => {
+      let producto = new ProductoDTO();
+      producto.prod = x.producto.nombre;
+      producto.cant = x.cantidad;
+      producto.precio = x.precio;
+      producto.total = x.total;
+      this.listProd.push(producto);
+    })
+
+    imprimir.productoList = this.listProd;
+
+    console.log('IMPRIMIR', imprimir);
+    const dialogRef = this.dialog.open(ImprimirComponent, {
+      data: {
+        imprimir: imprimir
+      }
+    });
   }
 
 

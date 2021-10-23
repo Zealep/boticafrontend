@@ -20,14 +20,14 @@
 
 <div class="container-cards-1">
 
-  <mat-card class="cards-item" >
+  <mat-card class="cards-item" (click)="openDialogStockMinimo()">
       <mat-card-header>
           <img mat-card-sm-image src="./assets/images/en-stock.svg">
           <mat-card-title><span class="span-number">{{stockMinimoSize}}</span><br><br><span>Productos en stock minimo</span></mat-card-title>
         </mat-card-header>
   </mat-card>
 
-  <mat-card class="cards-item">
+  <mat-card class="cards-item" (click)="openDialogSinStock()">
       <mat-card-header>
           <img mat-card-sm-image src="./assets/images/stock-limitado.svg">
           <mat-card-title><span class="span-number">{{noStockSize}}</span><br><br><span>Productos sin stock</span></mat-card-title>
@@ -35,18 +35,18 @@
   </mat-card>
 
 
-  <mat-card class="cards-item" >
+  <mat-card class="cards-item" (click)="openDialogPorVencer()">
       <mat-card-header>
           <img mat-card-sm-image src="./assets/images/cesta-de-la-compra.svg">
-          <mat-card-title><span class="span-number">{{comprasLastWeekSize}}</span><br><br><span>Productos por vencer</span></mat-card-title>
+          <mat-card-title><span class="span-number">{{expirateThreeMonthsSize}}</span><br><br><span>Productos por vencer</span></mat-card-title>
         </mat-card-header>
   </mat-card>
 
 
-  <mat-card class="cards-item" >
+  <mat-card class="cards-item" (click)="openDialogTop()">
       <mat-card-header>
           <img mat-card-sm-image src="./assets/images/compras.svg">
-          <mat-card-title><span class="span-number">{{comprasLastMonthSize}}</span><br><br><span>Productos TOP ventas</span></mat-card-title>
+          <mat-card-title><span class="span-number">{{topSalesSixMonthsSize}}</span><br><br><span>Productos TOP ventas</span></mat-card-title>
         </mat-card-header>
   </mat-card>
 

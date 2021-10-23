@@ -45,11 +45,13 @@ import { AnuladasComponent } from './venta/anuladas/anuladas.component';
 import { ViewDetailsComponent } from './venta/view-details/view-details.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ImprimirComponent } from './venta/imprimir/imprimir.component';
+import { ViewProductosComponent } from './dashboard/view-productos/view-productos.component';
 
 
 
 @NgModule({
-  declarations: [CategoriaComponent, AddCategoriaComponent, EditCategoriaComponent, FormCategoriaComponent, TipoDocumentoComponent, AddTipoDocumentoComponent, EditTipoDocumentoComponent, FormTipoDocumentoComponent, GastoComponent, AddGastoComponent, EditGastoComponent, FormGastoComponent, EmpleadoComponent, AddEmpleadoComponent, EditEmpleadoComponent, FormEmpleadoComponent, ClienteComponent,AddClienteComponent,EditClienteComponent,FormClienteComponent, ProductoComponent, FormProductoComponent, CompraComponent, FormCompraComponent, ProveedorComponent, AddProveedorComponent, EditProveedorComponent, FormProveedorComponent, DetailsCompraComponent, VentaComponent, DetailsVentaComponent, FormVentaComponent, ReporteVentaComponent, ReporteCompraComponent, ReporteDetVentasComponent, ReporteDetComprasComponent, AnuladasComponent, ViewDetailsComponent, DashboardComponent],
+  declarations: [CategoriaComponent, AddCategoriaComponent, EditCategoriaComponent, FormCategoriaComponent, TipoDocumentoComponent, AddTipoDocumentoComponent, EditTipoDocumentoComponent, FormTipoDocumentoComponent, GastoComponent, AddGastoComponent, EditGastoComponent, FormGastoComponent, EmpleadoComponent, AddEmpleadoComponent, EditEmpleadoComponent, FormEmpleadoComponent, ClienteComponent,AddClienteComponent,EditClienteComponent,FormClienteComponent, ProductoComponent, FormProductoComponent, CompraComponent, FormCompraComponent, ProveedorComponent, AddProveedorComponent, EditProveedorComponent, FormProveedorComponent, DetailsCompraComponent, VentaComponent, DetailsVentaComponent, FormVentaComponent, ReporteVentaComponent, ReporteCompraComponent, ReporteDetVentasComponent, ReporteDetComprasComponent, AnuladasComponent, ViewDetailsComponent, DashboardComponent, ImprimirComponent, ViewProductosComponent],
   imports: [
     PagesRoutingModule,
     CommonModule,

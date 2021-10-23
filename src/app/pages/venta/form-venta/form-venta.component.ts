@@ -1,3 +1,6 @@
+import { ProductoDTO } from './../../../model/dto/producto-list';
+import { ImprimirDTO } from './../../../model/dto/imprimir';
+import { ImprimirComponent } from './../imprimir/imprimir.component';
 import { ProductoService } from './../../../service/producto.service';
 import { Producto } from 'src/app/model/producto';
 import { startWith, map, catchError } from 'rxjs/operators';
@@ -40,7 +43,7 @@ export class FormVentaComponent implements OnInit {
   empleadoSeleccionado: Empleado;
   idEmpleado: number;
 
-  displayedColumns: string[] = ['codigo', 'nombre','precio', 'cantidad', 'total', 'acciones'];
+  displayedColumns: string[] = ['codigo', 'nombre', 'precio', 'cantidad', 'total', 'acciones'];
 
   dataProductos: MatTableDataSource<DetalleVenta>;
   ventaDetalles: DetalleVenta[] = [];
@@ -56,6 +59,8 @@ export class FormVentaComponent implements OnInit {
   cantidadModel: number;
   precioModel: number;
   totalModel: string;
+
+  list: ProductoDTO[] = [];
 
 
   idVenta: number;
@@ -81,7 +86,7 @@ export class FormVentaComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router,
     private route: ActivatedRoute,
-    public dialog:MatDialog,
+    public dialog: MatDialog,
     private productoService: ProductoService) { }
 
   ngOnInit(): void {
@@ -104,16 +109,16 @@ export class FormVentaComponent implements OnInit {
         map(val => this.filterEmpleado(val))
       );
 
-      this.listProductos();
-      this.filteredOptionsProducto = this.myControlProducto.valueChanges
+    this.listProductos();
+    this.filteredOptionsProducto = this.myControlProducto.valueChanges
       .pipe(
         startWith(null),
         map(val => this.filterProducto(val))
       );
   }
 
-  obtenerCodigoVenta(){
-    this.ventaService.getFormatCodigoVenta("null").subscribe(x=>{
+  obtenerCodigoVenta() {
+    this.ventaService.getFormatCodigoVenta("null").subscribe(x => {
       this.codigoVenta = x.formateo;
     })
   }
@@ -122,13 +127,13 @@ export class FormVentaComponent implements OnInit {
     return this.dataProductos.data.reduce((summ, v) => summ += v.total, 0);
   }
 
-  getIGV(){
-      let total = this.dataProductos.data.reduce((summ, v) => summ += v.total, 0);
-      return total*0.18;
+  getIGV() {
+    let total = this.dataProductos.data.reduce((summ, v) => summ += v.total, 0);
+    return total * 0.18;
   }
 
-  getSubTotal(){
-      return this.getTotalCost()-this.getIGV();
+  getSubTotal() {
+    return this.getTotalCost() - this.getIGV();
   }
 
   removeProducto(index: number, t: DetalleVenta) {
@@ -206,10 +211,6 @@ export class FormVentaComponent implements OnInit {
     let venta = new Venta();
     let tipoDocumento = new TipoDocumento();
 
-
-    if (this.idVenta != 0) {
-      venta.idVenta = this.idVenta;
-    }
     tipoDocumento.idTipoDocumento = this.form.get('tipoDocumento').value;
     venta.cliente = this.clienteSeleccionado;
     let empleado = new Empleado();
@@ -226,16 +227,45 @@ export class FormVentaComponent implements OnInit {
     venta.igv = this.getIGV();
     venta.total = this.getTotalCost();
 
-    this.ventaService.save(venta)
-    .pipe(
-      catchError(error => {
-        console.log('error',error);
-        this.snackBar.open(error, null, {
-          duration: 3000
-        });
-        return EMPTY;
-      })
-    )
+
+    let imprimir = new ImprimirDTO();
+    imprimir.cliente = venta.nombreCliente;
+    imprimir.igv = venta.igv;
+    imprimir.numero = this.codigoVenta;
+    imprimir.subtotal = venta.subTotal;
+    imprimir.total = venta.total;
+
+
+    this.ventaDetalles.forEach(x => {
+      let producto = new ProductoDTO();
+      producto.prod = x.producto.nombre;
+      producto.cant = x.cantidad;
+      producto.precio = x.precio;
+      producto.total = x.total;
+      this.list.push(producto);
+    })
+
+    imprimir.productoList = this.list;
+
+    console.log('IMPRIMIR', imprimir);
+    const dialogRef = this.dialog.open(ImprimirComponent, {
+      data: {
+        imprimir: imprimir
+      }
+    });
+
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.ventaService.save(venta)
+      .pipe(
+        catchError(error => {
+          console.log('error', error);
+          this.snackBar.open(error, null, {
+            duration: 3000
+          });
+          return EMPTY;
+        })
+      )
       .subscribe(result => {
         this.router.navigate(['/pages/venta']);
         if (this.idVenta == 0) {
@@ -243,12 +273,11 @@ export class FormVentaComponent implements OnInit {
             duration: 3000
           });
         }
-        else {
-          this.snackBar.open('Venta fue modificada', 'Cerrar', {
-            duration: 3000
-          });
-        }
       });
+    });
+
+
+
   }
 
   loadVenta(id: number) {
@@ -274,7 +303,7 @@ export class FormVentaComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(DetailsVentaComponent, {
       width: '550px',
-      disableClose:true
+      disableClose: true
 
     });
 
@@ -303,51 +332,51 @@ export class FormVentaComponent implements OnInit {
 
 
 
-// DETALLE VENTA
+  // DETALLE VENTA
 
-private listProductos() {
-  this.productoService.getAll()
-    .pipe(
-      catchError(error => {
-        this.snackBar.open('No se pudo obtener los productos, intentalo mas tarde', null, {
-          duration: 3000
-        });
-        return EMPTY;
-      })
-    )
-    .subscribe(producto => {
-      this.productos = producto;
-    });
-}
-
-private filterProducto(val: any) {
-  if (val != null && val.idProducto > 0) {
-    return this.productos.filter(option =>
-      option.nombre.toLowerCase().includes(val.nombre.toLowerCase()));
-  } else {
-    return this.productos.filter(option =>
-      option.nombre.toLowerCase().includes(val.toLowerCase()));
+  private listProductos() {
+    this.productoService.getAll()
+      .pipe(
+        catchError(error => {
+          this.snackBar.open('No se pudo obtener los productos, intentalo mas tarde', null, {
+            duration: 3000
+          });
+          return EMPTY;
+        })
+      )
+      .subscribe(producto => {
+        this.productos = producto;
+      });
   }
-}
 
-displayFnProducto(val: Producto) {
-  return val ? `${val.nombre}` : val;
-}
-
-seleccionarProducto(e) {
-  this.productoSeleccionado = e.option.value;
-  this.precioModel = e.option.value.precioVenta;
-  this.stockToday = e.option.value.stock;
-}
-
-send(){
-
-  if(!this.validateSend()){
-    this.snackBar.open('Falta completar los datos del producto',null,{
-      duration: 3000
-    });
-    return;
+  private filterProducto(val: any) {
+    if (val != null && val.idProducto > 0) {
+      return this.productos.filter(option =>
+        option.nombre.toLowerCase().includes(val.nombre.toLowerCase()));
+    } else {
+      return this.productos.filter(option =>
+        option.nombre.toLowerCase().includes(val.toLowerCase()));
+    }
   }
+
+  displayFnProducto(val: Producto) {
+    return val ? `${val.nombre}` : val;
+  }
+
+  seleccionarProducto(e) {
+    this.productoSeleccionado = e.option.value;
+    this.precioModel = e.option.value.precioVenta;
+    this.stockToday = e.option.value.stock;
+  }
+
+  send() {
+
+    if (!this.validateSend()) {
+      this.snackBar.open('Falta completar los datos del producto', null, {
+        duration: 3000
+      });
+      return;
+    }
 
     let detalleVenta = new DetalleVenta();
     let producto = new Producto();
@@ -362,18 +391,18 @@ send(){
       this.refreshDataSource();
     }
 
-}
-
-
-
-validateSend():boolean{
-  if(this.productoSeleccionado==null || this.cantidadModel == null || this.precioModel == null){
-    return false;
   }
-  else{
-    return true;
+
+
+
+  validateSend(): boolean {
+    if (this.productoSeleccionado == null || this.cantidadModel == null || this.precioModel == null) {
+      return false;
+    }
+    else {
+      return true;
+    }
   }
-}
 
 
 

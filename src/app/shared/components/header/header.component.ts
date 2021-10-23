@@ -10,12 +10,14 @@ export class HeaderComponent implements OnInit {
 
   apellidos: string;
   nombres: string
+  rol: string;
 
   constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.apellidos = sessionStorage.getItem('apellidos');
     this.nombres = sessionStorage.getItem('nombres');
+    this.rol = sessionStorage.getItem('rol');
   }
 
   salir(){

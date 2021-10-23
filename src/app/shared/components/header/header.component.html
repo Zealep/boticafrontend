@@ -22,7 +22,7 @@
         <mat-icon>attach_money</mat-icon></button>
       <mat-menu #menuVenta="matMenu">
         <button mat-menu-item [routerLink]="'/pages/venta'">Registrar Venta</button>
-        <button mat-menu-item [routerLink]="'/pages/venta-anuladas'">Ventas Anuladas</button>
+        <button *ngIf="this.rol=== 'ADMIN'" mat-menu-item [routerLink]="'/pages/venta-anuladas'">Ventas Anuladas</button>
 
 
       </mat-menu>
@@ -41,9 +41,9 @@
         Administracion
         <mat-icon>settings</mat-icon></button>
       <mat-menu #menuAdministracion="matMenu">
-        <button mat-menu-item [routerLink]="'/pages/empleado'">Empleados</button>
+        <button *ngIf="this.rol=== 'ADMIN'" mat-menu-item [routerLink]="'/pages/empleado'">Empleados</button>
         <button mat-menu-item [routerLink]="'/pages/tipo-documento'">Tipos Documentos</button>
-        <button mat-menu-item [routerLink]="'/pages/cliente'">Clientes</button>
+        <!--<button mat-menu-item [routerLink]="'/pages/cliente'">Clientes</button>-->
         <button mat-menu-item [routerLink]="'/pages/gasto'">Gastos</button>
         <button mat-menu-item [routerLink]="'/pages/proveedor'">Proveedores</button>
 

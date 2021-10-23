@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
       if(data.result === '1'){
         sessionStorage.setItem('apellidos', data.usuario.apellidos);
         sessionStorage.setItem('nombres', data.usuario.nombres);
+        sessionStorage.setItem('rol', data.usuario.rol);
         sessionStorage.setItem('id', data.usuario.idEmpleado.toString());
         this.router.navigate(['pages']);
       }

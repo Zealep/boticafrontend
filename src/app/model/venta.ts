@@ -8,6 +8,7 @@ export class Venta{
     cliente: Cliente;
     empleado: Empleado;
     codigo: string;
+    codigoLargo: string;
     fecha: Date;
     subTotal: number;
     descuento: number;

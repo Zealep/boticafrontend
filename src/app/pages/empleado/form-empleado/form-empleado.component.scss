@@ -1,12 +1,18 @@
-mat-card,form{
+mat-card{
     width: 100%;
 }
 
-mat-form-field {
-    width: 50%;
-    margin: 0.5rem;
-  }
   button{
       width: 30%;
-     
+
+  }
+
+  .fila{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  mat-form-field{
+    margin: 1rem;
   }

@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PagesComponent } from './pages/pages.component';
-import { registerLocaleData } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy, registerLocaleData } from '@angular/common';
 
 
 registerLocaleData(es);
@@ -26,6 +26,7 @@ registerLocaleData(es);
     PagesModule,  ],
   providers: [
     { provide: LOCALE_ID, useValue: "es-ES"},
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [AppComponent]
 })

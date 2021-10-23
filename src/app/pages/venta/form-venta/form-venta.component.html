@@ -66,8 +66,8 @@
         </ng-container>
 
         <ng-container matColumnDef="precio">
-          <th mat-header-cell *matHeaderCellDef> Precio </th>
-          <td mat-cell *matCellDef="let detail">S/. {{detail.precio}} </td>
+          <th mat-header-cell *matHeaderCellDef>S/.Precio </th>
+          <td mat-cell *matCellDef="let detail">{{detail.precio}} </td>
           <td mat-footer-cell *matFooterCellDef></td>
 
 
@@ -83,13 +83,13 @@
 
 
         <ng-container matColumnDef="total">
-          <th mat-header-cell *matHeaderCellDef> Total </th>
-          <td mat-cell *matCellDef="let detail">S/. {{detail.total}}</td>
+          <th mat-header-cell *matHeaderCellDef>S/.Total </th>
+          <td mat-cell *matCellDef="let detail">{{detail.total}}</td>
           <td mat-footer-cell *matFooterCellDef [style.color]="'#304ffe'">
-            <p>S/. {{getSubTotal()}}</p>
-            <p>S/. {{getIGV() | number : '1.2-2': 'en-US'}}</p>
+            <p>S/.&nbsp;{{getSubTotal()}}</p>
+            <p>S/.&nbsp;{{getIGV() | number : '1.2-2': 'en-US'}}</p>
 
-            <p>S/. {{getTotalCost()}}</p>
+            <p>S/.&nbsp;{{getTotalCost()}}</p>
 
           </td>
 

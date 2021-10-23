@@ -19,6 +19,9 @@ export class FormEmpleadoComponent implements OnInit {
     telefono: new FormControl(''),
     celular: new FormControl(''),
     correo: new FormControl(''),
+    usuario: new FormControl(''),
+    clave: new FormControl(''),
+    rol: new FormControl(''),
     fechaIngreso: new FormControl(''),
     sueldo: new FormControl('')
   });
@@ -26,7 +29,7 @@ export class FormEmpleadoComponent implements OnInit {
   @Input() title: string;
   @Input() labelSubmit: string;
   @Input()
-  set model(m: Empleado){ 
+  set model(m: Empleado){
     if(!m) {
       return;
     }
